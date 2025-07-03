@@ -1,25 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Contact</title>
-</head>
-<body>
-    <h1>Contact {{$name}}</h1>
-    <form action="{{ route('contact1') }}" method="POST">
-        @csrf
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
+@extends('master')
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+@section('title', 'Contact')
 
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" required></textarea>
+@section('content')
+    <h1>Contact</h1>
+    <p>This is the contact page.</p>
+    <p>Feel free to reach out to us through the contact form below.</p>
+@endsection
 
-        <button type="submit">Send</button>
-    </form>
-</body>
-</html>
+@section('more_content')
+
+    <p>This is appended to the sidebar of the contact page.</p>
+@endsection
