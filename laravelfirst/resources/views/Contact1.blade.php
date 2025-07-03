@@ -8,12 +8,16 @@
 </head>
 <body>
     <h1>Contact Us </h1>
-    @if($name)
+    @if(isset($name))
         <p>Hello, {{ $name }}!</p>
     @else
         <p>Hello, Guest!</p>
 
     @endif
+
+    @foreach ([1,2,3,4,5,6] as $item)
+        {{ $item }}
+    @endforeach
     <form  method="POST">
         @csrf
         <label for="name">Name:</label>
