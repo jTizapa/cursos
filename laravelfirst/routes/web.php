@@ -1,14 +1,17 @@
 <?php
 
+use App\Http\Controllers\FirtsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/contact', function () {
+Route::get('/contact', [FirtsController::class, 'index'])->name('contact');
+
+/*Route::get('/contact', function () {
     return view('contact',["name" => "John Doe"]);
-})->name('contact');
+})->name('contact');*/
 
 Route::get('/contact1', function () {
     // return redirect()->route('contact'); // ejecicio de la sessión 3 video 20 redireccionamiento de rutas
