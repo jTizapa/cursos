@@ -7,8 +7,14 @@
     <title>Contact1</title>
 </head>
 <body>
-    <h1>Contact Us</h1>
-    <form action="{{ route('contact1') }}" method="POST">
+    <h1>Contact Us </h1>
+    @if($name)
+        <p>Hello, {{ $name }}!</p>
+    @else
+        <p>Hello, Guest!</p>
+
+    @endif
+    <form  method="POST">
         @csrf
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required>
