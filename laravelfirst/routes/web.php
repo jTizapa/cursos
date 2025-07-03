@@ -11,5 +11,6 @@ Route::get('/contact', function () {
 })->name('contact');
 
 Route::get('/contact1', function () {
+    return redirect()->route('contact'); // ejecicio de la sessión 3 video 20 redireccionamiento de rutas
     return view('contact1');
 })->name('contact1');
