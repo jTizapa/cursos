@@ -1,13 +1,10 @@
-import './style.css'  
-import { name, age, templateString } from './bases/01-types.ts' 
-import { bulbasaur } from './bases/03-classes.ts'
+import './style.css'   
+import { charmander } from './bases/04-injection';
 
 const app =  document.querySelector<HTMLButtonElement>('#app')!
 
 app.innerHTML = ` 
-<h1>Hello ${name}! ${age}</h1>
-<p>${templateString}</p>
-<p>${bulbasaur.name}</p>
-<p>${bulbasaur.getImageUrl}</p>
-<img src="${bulbasaur.getImageUrl}" alt="${bulbasaur.name}>
+ <h1>Hello ${charmander.name}!</h1>
+ <p>${charmander.imageUrl}</p>
+ <img src="${charmander.imageUrl}" alt="${charmander.name}">
 ` ;
