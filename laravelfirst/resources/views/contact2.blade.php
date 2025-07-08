@@ -1,6 +1,6 @@
 @extends('master')
 
 @section('contect')
-    <h1>Contact</h1>   
-    {{$name}}
+    <h1>Contact 2</h1>
+   
 @endsection
