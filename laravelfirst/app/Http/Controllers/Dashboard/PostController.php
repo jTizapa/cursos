@@ -19,7 +19,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::paginate(2);
-       
+
         return view('dashboard/post/index', compact('posts'));
 
         // $post = Post::find(1)->delete();
@@ -35,7 +35,7 @@ class PostController extends Controller
         //         'posted' => 'not',
         //         'image' => 'test image',
         //     ]
-        // ); 
+        // );
 
         // dd($post->title);
 
@@ -49,7 +49,7 @@ class PostController extends Controller
         //         'posted' => 'not',
         //         'image' => 'test image',
         //     ]
-        // ); 
+        // );
     }
 
     /**
@@ -69,47 +69,7 @@ class PostController extends Controller
     public function store(StoreRequest $request)
     {
         Post::create($request->validated());
-        return to_route('post.index');
-
-        // $validated = Validator::make($request->all(),
-        //     [
-        //         'title' => 'required|min:5|max:500',
-        //         'slug' => 'required|min:5|max:500',
-        //         'content' => 'required|min:7',
-        //         'category_id' => 'required|integer',
-        //         'description' => 'required|min:7',
-        //         'posted' => 'required',
-        //     ]
-        // );
-
-        // dd($validated->fails());
-
-        // $request->validate([
-        //     'title' => 'required|min:5|max:500',
-        //     'slug' => 'required|min:5|max:500',
-        //     'content' => 'required|min:7',
-        //     'category_id' => 'required|integer',
-        //     'description' => 'required|min:7',
-        //     'posted' => 'required',
-        // ]);
-
-
-
-        // dd(request()->get('title'));
-        // dd($request->all());
-        //   Post::create(
-        //     [
-        //         'title' => $request->all()['title'],
-        //         'slug' => $request->all()['slug'],
-        //         'content' => $request->all()['content'],
-        //         'category_id' => $request->all()['category_id'],
-        //         'description' => $request->all()['description'],
-        //         // 'image' => $request->all()['image'],
-        //     ]
-        // ); 
-
-
-        
+        return to_route('post.index')->with("status","Category created");
     }
 
     /**
@@ -134,7 +94,7 @@ class PostController extends Controller
      */
     public function update(PutRequest $request, Post $post)
     {
-        
+
         $data = $request->validated();
 
         // image
@@ -145,12 +105,12 @@ class PostController extends Controller
         // image
 
         $post->update($data);
-        return to_route('post.index');
+        return to_route('post.index')->with("status","Category updated");
     }
 
     public function destroy(Post $post)
     {
         $post->delete();
-        return to_route('post.index');
+        return to_route('post.index')->with("status","Category deleted");
     }
 }

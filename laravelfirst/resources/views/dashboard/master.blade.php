@@ -10,7 +10,13 @@
     {{-- <header>
         Header 2
     </header> --}}
-    
+
+    @if (@session('status'))
+        {{section('status')}}
+    @endsession
+
+    @endif
+
     @yield('content')
 
    <section>
