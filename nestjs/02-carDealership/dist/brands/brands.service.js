@@ -11,13 +11,7 @@ const common_1 = require("@nestjs/common");
 const uuid_1 = require("uuid");
 let BrandsService = class BrandsService {
     constructor() {
-        this.brands = [
-            {
-                id: (0, uuid_1.v7)(),
-                name: "Toyota",
-                createdAt: new Date().getTime()
-            }
-        ];
+        this.brands = [];
     }
     create(createBrandDto) {
         const { name } = createBrandDto;
@@ -56,6 +50,9 @@ let BrandsService = class BrandsService {
     remove(id) {
         this.findOne(id);
         this.brands = this.brands.filter(car => car.id == id);
+    }
+    fillBrandWithSeedData(brand) {
+        this.brands = brand;
     }
 };
 exports.BrandsService = BrandsService;

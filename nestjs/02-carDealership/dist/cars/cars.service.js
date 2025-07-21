@@ -17,16 +17,6 @@ let CarsService = class CarsService {
                 brand: 'Toyota',
                 model: "Collora"
             },
-            {
-                id: (0, uuid_1.v7)(),
-                brand: 'Chevrolet',
-                model: "Aveo"
-            },
-            {
-                id: (0, uuid_1.v7)(),
-                brand: 'Hyundai',
-                model: "Electra"
-            }
         ];
     }
     findAll() {
@@ -65,6 +55,9 @@ let CarsService = class CarsService {
     delete(id) {
         let carDB = this.findOneById(id);
         this.cars = this.cars.filter(car => car.id != id);
+    }
+    fillCarsWithSeedData(car) {
+        this.cars = car;
     }
 };
 exports.CarsService = CarsService;

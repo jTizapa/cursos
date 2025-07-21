@@ -17,4 +17,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::group(['prefix' => 'blog'])({
+    Routee::get("",[BlogController::class, 'index']);
+});
+
 require __DIR__.'/auth.php';

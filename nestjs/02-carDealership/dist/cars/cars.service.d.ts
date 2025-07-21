@@ -7,4 +7,5 @@ export declare class CarsService {
     create(createCarDto: CreateCarDto): Car;
     update(id: string, updateCarDto: UpdateCarDto): Car;
     delete(id: string): void;
+    fillCarsWithSeedData(car: Car[]): void;
 }

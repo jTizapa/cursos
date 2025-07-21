@@ -8,11 +8,11 @@ import { v7 as uuid} from 'uuid';
 export class BrandsService {
 
   private brands : Brand[] = [
-    {
+    /*{
       id: uuid(),
       name: "Toyota",
       createdAt: new Date().getTime()
-    }
+    }*/
   ]
   create(createBrandDto: CreateBrandDto) {
     const {name } =createBrandDto
@@ -59,5 +59,9 @@ export class BrandsService {
   remove(id: string) {
     this.findOne(id)
     this.brands = this.brands.filter(car => car.id == id)
+  }
+
+  fillBrandWithSeedData( brand: Brand[]){
+          this.brands = brand
   }
 }
