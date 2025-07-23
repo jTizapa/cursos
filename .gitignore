@@ -56,3 +56,6 @@ pids
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
 nestjs/03-pokedex/mongo 
+package.json
+.gitignore
+nestjs/03-pokedex/src/main.ts
