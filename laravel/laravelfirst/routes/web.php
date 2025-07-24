@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\UserAccessDashboardMiddleware;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('vue');
 });
 
 // Route::get('/dashboard', function () {
