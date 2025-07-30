@@ -1,5 +1,5 @@
 # compiled output
-/dist
+
 /node_modules
 /build
 
@@ -59,3 +59,5 @@ nestjs/03-pokedex/mongo
 package.json
 .gitignore
 nestjs/03-pokedex/src/main.ts
+nestjs/03-pokedex/.env
+nestjs/03-pokedex/.env.prod
