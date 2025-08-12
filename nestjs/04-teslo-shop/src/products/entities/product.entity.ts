@@ -1,5 +1,12 @@
-import { text } from 'stream/consumers';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BeforeInsert,
+  BeforeUpdate,
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { ProductImage } from './product-image.entity';
 
 @Entity()
 export class Product {
@@ -11,7 +18,7 @@ export class Product {
   })
   title: string;
 
-  @Column('numeric', {
+  @Column('float', {
     default: 0,
   })
   price: number;
@@ -40,4 +47,32 @@ export class Product {
 
   @Column('text')
   gender: string;
+
+  @Column('text', { array: true, default: [] })
+  tags: string[];
+
+  @BeforeInsert()
+  checkSlugInsert() {
+    if (!this.slug) {
+      this.slug = this.title;
+    }
+    this.slug = this.slug
+      .toLowerCase()
+      .replaceAll(' ', '_')
+      .replaceAll("'", '');
+  }
+
+  //@BeforeUpdate()
+  @BeforeUpdate()
+  cheSlugUpdate() {
+    this.slug = this.slug
+      .toLowerCase()
+      .replaceAll(' ', '_')
+      .replaceAll("'", '');
+  }
+
+  @OneToMany(() => ProductImage, (productImgage) => productImgage.product, {
+    cascade: true,
+  })
+  images?: ProductImage[];
 }

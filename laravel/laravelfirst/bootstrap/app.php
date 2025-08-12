@@ -12,13 +12,14 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
     )
-    ->withMiddleware(function (Middleware $middleware): void {
-        //
+    ->withMiddleware(function (Middleware $middleware) {
+        // $middleware->statefulApi();
     })
-    ->withExceptions(function (Exceptions $exceptions): void {
-        $exceptions->render(function (NotFoundHttpException $e, $request) {
+    ->withExceptions(function (Exceptions $exceptions) {
+        $exceptions->render(function(NotFoundHttpException $e, $request){
+            // dd($request->wantsJson());
             if($request->expectsJson()){
-                return response()->json(["Not Found"], 404);
+                return response()->json('Not found',404);
             }
         });
     })->create();
