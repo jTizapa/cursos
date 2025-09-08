@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
-use Storage;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\Post\PutRequest;
 use App\Http\Requests\Post\StoreRequest;
 use App\Models\Post;
+use Illuminate\Support\Facades\Storage as FacadesStorage;
 
 class PostController extends Controller
 {
@@ -72,7 +72,7 @@ class PostController extends Controller
             'image' => 'required|mimes:jpg,jpeg,png,gif|max:10240'
         ]);
 
-        Storage::disk('public_upload')->delete("image/" . $post->image);
+        FacadesStorage::disk('public_upload')->delete("image/" . $post->image);
 
         $data['image'] = $filename = time() . '.' . $request->image->extension();
 

@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
     // Controlador que empleamos para hacer pruebas solamente con la auth SPA de Sanctum y las rutas.api
     // tambien probamos que lo podemos consumir desde las rutas de web.php
     function authenticate(Request $request) {
-       
+
         $validator = validator()->make($request->all(),
             [
                 'email' => 'required', 'email',
@@ -24,7 +24,7 @@ class LoginController extends Controller
         }
 
         $credentials = $validator->valid();
-        
+
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
             return response()->json('Successful authentication');
